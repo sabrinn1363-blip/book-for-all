@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300">
+  <defs>
+    <linearGradient id="g-madame-bovary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6b4c6e"/>
+      <stop offset="100%" stop-color="#a67ba8"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="300" fill="url(#g-madame-bovary)"/>
+  <text x="100" y="140" text-anchor="middle" fill="rgba(255,255,255,0.92)" font-family="Georgia, serif" font-size="18" font-weight="600"><tspan x="100" dy="0">Madame</tspan><tspan x="100" dy="22">Bovary</tspan></text>
+</svg>

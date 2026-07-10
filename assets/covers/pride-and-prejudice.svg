@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300">
+  <defs>
+    <linearGradient id="g-pride-and-prejudice" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5c4a6b"/>
+      <stop offset="100%" stop-color="#9a8aaa"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="300" fill="url(#g-pride-and-prejudice)"/>
+  <text x="100" y="140" text-anchor="middle" fill="rgba(255,255,255,0.92)" font-family="Georgia, serif" font-size="18" font-weight="600"><tspan x="100" dy="0">Pride</tspan><tspan x="100" dy="22">and</tspan><tspan x="100" dy="22">Prejudice</tspan></text>
+</svg>

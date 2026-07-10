@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="پایگاه اطلاعات کتاب — قابل جستجو و مرور">
+  <title>کتاب برای همه</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#/" class="logo">کتاب برای همه</a>
+      <nav class="header-nav" id="admin-nav" hidden>
+        <a href="#/add" class="header-link">افزودن کتاب</a>
+        <a href="#/manage" class="header-link">مدیریت</a>
+        <button type="button" class="header-link header-logout" id="admin-logout">خروج</button>
+      </nav>
+      <form class="search-form header-search" id="header-search" role="search">
+        <input type="search" name="q" placeholder="جستجوی کتاب…" aria-label="جستجوی کتاب" autocomplete="off">
+        <button type="submit">جستجو</button>
+      </form>
+    </div>
+  </header>
+
+  <main id="app" class="container">
+    <p class="loading">در حال بارگذاری کتاب‌ها…</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>پایگاه ساده و قابل جستجوی اطلاعات کتاب</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
