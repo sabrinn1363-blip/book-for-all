@@ -2,7 +2,7 @@
  * تنظیمات Firebase — پروژه book-for-all
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyCke3f0atVbqj8k5QGzcik7rpwEn1n6hoM",
+  apiKey: "AIzaSyCke3f0atVbqj8k5QGzciK7rpwEn1n6hoM",
   authDomain: "book-for-all-635ee.firebaseapp.com",
   projectId: "book-for-all-635ee",
   storageBucket: "book-for-all-635ee.firebasestorage.app",
