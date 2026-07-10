@@ -184,7 +184,7 @@ function bindManagePage() {
   document.getElementById("seed-books")?.addEventListener("click", async () => {
     if (!confirm("کتاب‌های نمونه از فایل محلی به ابر منتقل شوند؟")) return;
     try {
-      const res = await fetch("data/books.json");
+      const res = await fetch("/book-for-all/data/books.json");
       if (!res.ok) throw new Error("خواندن فایل محلی ممکن نشد.");
       const localBooks = await res.json();
       const result = await seedCloudBooks(localBooks);

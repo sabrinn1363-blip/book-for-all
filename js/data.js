@@ -5,7 +5,7 @@ import { fetchCloudBooks } from "./storage.js";
 let booksCache = null;
 
 async function loadLocalBooks() {
-  const res = await fetch("data/books.json");
+  const res = await fetch("/book-for-all/data/books.json");
   if (!res.ok) throw new Error("Failed to load books");
   return res.json();
 }
