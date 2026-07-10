@@ -195,7 +195,7 @@ export function renderNotFound() {
 
 export function renderAdminLogin(error = "") {
   return `
-    <h1 class="page-title">ورود مشتری</h1>
+    <h1 class="page-title">ورود ادمین</h1>
     <p class="page-subtitle">فقط صاحب سایت می‌تواند کتاب اضافه یا ویرایش کند. کتاب‌ها برای همه کاربران آنلاین ذخیره می‌شوند.</p>
 
     <form class="book-form admin-login-form" id="admin-login-form">
@@ -218,8 +218,8 @@ export function renderAdminLogin(error = "") {
 export function renderAdminDenied() {
   return `
     <h1 class="page-title">دسترسی محدود</h1>
-    <p class="page-subtitle">این بخش فقط برای مشتری سایت است. کاربران عادی فقط می‌توانند کتاب‌ها را ببینند و جستجو کنند.</p>
-    <p><a href="#/admin" class="btn">ورود مشتری</a> <a href="#/" class="btn btn-secondary">صفحه اصلی</a></p>`;
+    <p class="page-subtitle">این بخش فقط برای ادمین سایت است. کاربران عادی فقط می‌توانند کتاب‌ها را ببینند و جستجو کنند.</p>
+    <p><a href="#/admin" class="btn">ورود ادمین</a> <a href="#/" class="btn btn-secondary">صفحه اصلی</a></p>`;
 }
 
 function selectOptions(labels, selected = "") {

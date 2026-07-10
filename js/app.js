@@ -233,7 +233,7 @@ function bindAdminLogin() {
       location.hash = "#/manage";
     } catch (error) {
       app.innerHTML = renderAdminLogin(authErrorMessage(error));
-      setPageTitle("ورود مشتری");
+      setPageTitle("ورود ادمین");
       bindAdminLogin();
     }
   });
@@ -296,13 +296,13 @@ async function render() {
       html = renderAdminLogin(
         "Firebase هنوز پیکربندی نشده. توسعه‌دهنده باید js/firebase-config.js را پر کند."
       );
-      setPageTitle("ورود مشتری");
+      setPageTitle("ورود ادمین");
     } else if (admin) {
       location.hash = "#/manage";
       return;
     } else {
       html = renderAdminLogin();
-      setPageTitle("ورود مشتری");
+      setPageTitle("ورود ادمین");
     }
   } else if (parts[0] === "add") {
     if (!admin) {
