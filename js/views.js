@@ -12,6 +12,7 @@ import {
   schoolLabels,
   periodLabels
 } from "./i18n.js";
+import { makePlaceholderCover } from "./book-form.js";
 
 export function escapeHtml(str) {
   const div = document.createElement("div");
@@ -19,11 +20,26 @@ export function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function escapeAttr(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;");
+}
+
+export function coverSrc(book) {
+  const cover = book.cover || "";
+  if (cover.startsWith("http") || cover.startsWith("assets/")) {
+    return escapeAttr(cover);
+  }
+  return escapeAttr(makePlaceholderCover(book.title));
+}
+
 export function bookCard(book) {
   return `
     <li class="book-card">
       <a href="#/book/${encodeURIComponent(book.id)}">
-        <img class="book-cover" src="${escapeHtml(book.cover)}" alt="جلد ${escapeHtml(book.title)}" loading="lazy" width="200" height="300">
+        <img class="book-cover" src="${coverSrc(book)}" alt="جلد ${escapeHtml(book.title)}" loading="lazy" width="200" height="300">
         <div class="book-card-body">
           <h3 class="book-card-title">${escapeHtml(book.title)}</h3>
           <p class="book-card-author">${escapeHtml(book.author)}</p>
@@ -126,7 +142,7 @@ export function renderBook(book, related) {
 
   return `
     <article class="book-detail">
-      <img class="book-detail-cover" src="${escapeHtml(book.cover)}" alt="جلد ${escapeHtml(book.title)}" width="220" height="330">
+      <img class="book-detail-cover" src="${coverSrc(book)}" alt="جلد ${escapeHtml(book.title)}" width="220" height="330">
       <div>
         <h1 class="book-detail-title">${escapeHtml(book.title)}</h1>
         <p class="book-detail-author">اثر ${link("author", book.author)}</p>

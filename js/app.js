@@ -32,7 +32,7 @@ import {
   seedCloudBooks,
   downloadJson
 } from "./storage.js";
-import { makeBookId, makePlaceholderCover, today } from "./book-form.js";
+import { makeBookId, today } from "./book-form.js";
 import {
   isAdmin,
   loginAdmin,
@@ -143,7 +143,7 @@ async function bookFromForm(form) {
     summary: data.get("summary")?.toString().trim() || "",
     review: data.get("review")?.toString().trim() || "",
     tags,
-    cover: coverUrl || makePlaceholderCover(title),
+    cover: coverUrl || "",
     addedAt
   };
 }
