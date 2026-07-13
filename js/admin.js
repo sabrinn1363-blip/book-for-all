@@ -3,11 +3,23 @@ import {
   isFirebaseConfigured,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  setPersistence,
+  browserLocalPersistence
 } from "./firebase.js";
 
 let currentUser = null;
-let authReady = null;
+let authListenerStarted = false;
+
+function startAuthListener() {
+  if (!isFirebaseConfigured() || authListenerStarted) return;
+  const { auth } = getFirebase();
+  authListenerStarted = true;
+  setPersistence(auth, browserLocalPersistence).catch(() => {});
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+  });
+}
 
 export function isCloudAdmin() {
   return isFirebaseConfigured();
@@ -15,6 +27,7 @@ export function isCloudAdmin() {
 
 export function isAdmin() {
   if (!isFirebaseConfigured()) return false;
+  startAuthListener();
   return Boolean(currentUser);
 }
 
@@ -27,18 +40,21 @@ export function waitForAuth() {
     return Promise.resolve(null);
   }
 
-  if (!authReady) {
-    const { auth } = getFirebase();
-    authReady = new Promise((resolve) => {
-      onAuthStateChanged(auth, (user) => {
-        currentUser = user;
-        resolve(user);
-        authReady = Promise.resolve(user);
-      });
-    });
+  startAuthListener();
+  const { auth } = getFirebase();
+
+  if (auth.currentUser) {
+    currentUser = auth.currentUser;
+    return Promise.resolve(currentUser);
   }
 
-  return authReady;
+  return new Promise((resolve) => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+      unsub();
+      resolve(user);
+    });
+  });
 }
 
 export async function loginAdmin(email, password) {

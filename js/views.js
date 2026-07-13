@@ -207,7 +207,7 @@ export function renderAdminLogin(error = "") {
         <span>رمز عبور</span>
         <input type="password" name="password" required autocomplete="current-password" placeholder="رمز پنل مدیریت">
       </label>
-      ${error ? `<p class="form-error">${escapeHtml(error)}</p>` : ""}
+      ${error ? `<p class="form-error">${escapeHtml(error)}</p>` : '<p class="form-error" hidden></p>'}
       <div class="form-actions">
         <button type="submit" class="btn">ورود</button>
         <a href="#/" class="btn btn-secondary">بازگشت</a>

@@ -222,19 +222,36 @@ function bindAdminLogin() {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const data = new FormData(form);
-    const email = data.get("email")?.toString() || "";
+    const email = data.get("email")?.toString().trim() || "";
     const password = data.get("password")?.toString() || "";
     const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) submitBtn.disabled = true;
+    let errorEl = form.querySelector(".form-error");
+
+    if (!errorEl) {
+      errorEl = document.createElement("p");
+      errorEl.className = "form-error";
+      form.querySelector(".form-actions")?.before(errorEl);
+    }
+    errorEl.hidden = true;
+    errorEl.textContent = "";
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "در حال ورود…";
+    }
 
     try {
       await loginAdmin(email, password);
       syncAdminNav();
       location.hash = "#/manage";
+      await render();
     } catch (error) {
-      app.innerHTML = renderAdminLogin(authErrorMessage(error));
-      setPageTitle("ورود ادمین");
-      bindAdminLogin();
+      errorEl.textContent = authErrorMessage(error);
+      errorEl.hidden = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "ورود";
+      }
     }
   });
 }
