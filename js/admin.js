@@ -83,7 +83,9 @@ export function authErrorMessage(error) {
     "auth/user-not-found": "ایمیل یا رمز اشتباه است.",
     "auth/wrong-password": "ایمیل یا رمز اشتباه است.",
     "auth/invalid-credential": "ایمیل یا رمز اشتباه است.",
-    "auth/too-many-requests": "تلاش زیاد. کمی بعد دوباره امتحان کنید."
+    "auth/too-many-requests": "تلاش زیاد. کمی بعد دوباره امتحان کنید.",
+    "auth/network-request-failed":
+      "اتصال به سرور ممکن نشد. اینترنت را چک کنید. اگر در ایران هستید، VPN روشن کنید یا در Chrome باز کنید (نه داخل واتساپ)."
   };
   return map[code] || error?.message || "ورود ممکن نشد.";
 }
